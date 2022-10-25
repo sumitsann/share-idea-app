@@ -11,14 +11,13 @@ module.exports.validateRegisterInput = (
   if (email.trim() === "") {
     errors.email = "Email must not be empty";
   } else {
-    const regEx =
-      /^([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})$/;
+    const regEx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!email.match(regEx)) {
-      errors.email = "Email must be a valid email address";
+      errors.email = "Email address is not valid.";
     }
   }
   if (password === "") {
-    errors.password = "Password must not empty";
+    errors.password = "Password must not be empty.";
   } else if (password !== confirmPassword) {
     errors.confirmPassword = "Passwords must match";
   }
